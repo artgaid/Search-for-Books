@@ -6,16 +6,20 @@ export default function Selector({
   children,
   defaultValue,
 }) {
+  console.log(children, "cld 2");
   return (
     <label className="selector">
       <span className="selector__title">{title}</span>
-      <select
-        className="selector__select"
-        onChange={onChange}
-        defaultValue={defaultValue}
-      >
-        {children}
-      </select>
+      {children.map((children, idx) => (
+        <select
+          key={idx}
+          className="selector__select"
+          onChange={onChange}
+          defaultValue={defaultValue}
+        >
+          {children}
+        </select>
+      ))}
     </label>
   );
 }
