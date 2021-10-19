@@ -10,14 +10,14 @@ const BooksService = (options) => {
     }${options.sortingBy && `&orderBy=${options.sortingBy}`}&startIndex=${
       options.startIndex
     }&maxResults=${options.maxResults}&key=${apiConfig.apiKey}`
-  )
-    .then((response) => response.json())
-    .then((data) => {
-      return data;
-    })
-    .catch((err) => {
-      console.log(err, "err");
-    });
+  );
+  // .then((response) => response.json())
+  // .then((data) => {
+  //   return data;
+  // })
+  // .catch((err) => {
+  //   console.log(err, "err");
+  // });
 };
 
 export default BooksService;
