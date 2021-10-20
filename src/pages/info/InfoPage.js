@@ -1,9 +1,9 @@
 import "./styles.scss";
 import { Container } from "../../components/shared";
-import useAppSelector from "../../hooks/useAppSelector";
+import { useSelector } from "react-redux";
 
 export default function InfoPage() {
-  const fetchStatus = useAppSelector((state) => state.books.status);
+  const fetchStatus = useSelector((state) => state.books.status);
 
   const message =
     fetchStatus === "failed" ? (

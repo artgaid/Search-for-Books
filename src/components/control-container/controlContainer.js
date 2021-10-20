@@ -1,23 +1,24 @@
-import './styles.scss';
-import clsx from 'clsx';
-import {Button, Loader} from '../shared';
-import PropTypes from 'prop-types';
+import "./styles.scss";
+import clsx from "clsx";
+import { Button, Loader } from "../shared";
 
-ControlContainer.propTypes = {
-  isLoading: PropTypes.bool,
-  onClick: PropTypes.func,
-  mt: PropTypes.number,
-}
-
-export default function ControlContainer({isLoading, onClick, mt = 3}) {
-  const controlContainerClass = clsx('control-container', mt && `control-container_margin-top-${mt}`);
+export default function ControlContainer({ isLoading, onClick, mt = 3 }) {
+  const controlContainerClass = clsx(
+    "control-container",
+    mt && `control-container_margin-top-${mt}`
+  );
 
   return (
     <div className={controlContainerClass}>
-      <Button buttonText="load more" onClick={onClick} ml={5} disabled={isLoading}/>
+      <Button
+        buttonText="load more"
+        onClick={onClick}
+        ml={5}
+        disabled={isLoading}
+      />
       <div className="control-container__loader-container">
-        {isLoading && <Loader/>}
+        {isLoading && <Loader />}
       </div>
     </div>
-  )
+  );
 }

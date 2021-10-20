@@ -7,15 +7,28 @@ export const fetchBooks = createAsyncThunk(
   async (_, { getState }) => {
     const { searchQuery, currentPage, maxResults } = getState().books;
     const { categories, sortingBy } = getState().searchOptions;
-    const options = {
-      query: searchQuery,
-      categories: categories,
-      sortingBy: sortingBy,
-      startIndex: currentPage,
-      maxResults: maxResults,
-    };
-    const response = await BooksService(options);
+
+    const response = await BooksService.getBooks(
+      searchQuery,
+      currentPage,
+      maxResults,
+      categories,
+      sortingBy
+    );
     const data = await response.json();
+
+    // const options = {
+    //   query: searchQuery,
+    //   categories: categories,
+    //   sortingBy: sortingBy,
+    //   startIndex: currentPage,
+    //   maxResults: maxResults,
+    // };
+    // const response = await BooksService(options);
+    // const data = await response.json();
+
+    // const data = await BooksService(options);
+
     let booksData = [];
     if (data.items && data.items.length > 0) {
       booksData = constructBooksData(data.items);

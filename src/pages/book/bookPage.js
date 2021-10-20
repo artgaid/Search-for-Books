@@ -1,21 +1,21 @@
 import { useParams, Redirect } from "react-router-dom";
-import useAppSelector from "../../hooks/useAppSelector";
+import { useSelector } from "react-redux";
 import { selectFoundBooks } from "../../store/selectors";
 import "./styles.scss";
 import joinStringFromArray from "../../helpers/joinStringFromArray";
 import {
   Container,
-  DescriptionField,
   ImageElement,
   SecondaryInfo,
   Subtitle,
   UnderlineInfo,
 } from "../../components/shared";
+import clsx from "clsx";
 
 export default function BookPage() {
   const { bookId } = useParams();
 
-  const books = useAppSelector(selectFoundBooks);
+  const books = useSelector(selectFoundBooks);
   if (books.length === 0) {
     return <Redirect to="/" />;
   }
@@ -28,12 +28,18 @@ export default function BookPage() {
   const categories = joinStringFromArray(book.volumeInfo.categories, " / ");
   const authors = joinStringFromArray(book.volumeInfo.authors, ", ");
 
+  const descriptionFieldClass = clsx(
+    "description-field",
+    "description-field_margin-top-3",
+    "description-field_height-2"
+  );
+
   return (
     <Container>
       <div className="book-page">
         <div className="book-page__image">
           <ImageElement
-            imageSrc={book.volumeInfo.imageLinks.thumbnail}
+            imageSrc={book.volumeInfo.imageLinks.smallThumbnail}
             altText="image"
             size="l"
           />
@@ -42,9 +48,9 @@ export default function BookPage() {
           <SecondaryInfo infoText={categories} />
           <Subtitle element="h2" titleText={book.volumeInfo.title} mt={3} />
           <UnderlineInfo infoText={authors} mt={2} />
-          <DescriptionField mt={3} height={2}>
+          <div className={descriptionFieldClass}>
             {book.volumeInfo.description}
-          </DescriptionField>
+          </div>
         </div>
       </div>
     </Container>
