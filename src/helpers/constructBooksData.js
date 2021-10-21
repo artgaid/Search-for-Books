@@ -1,19 +1,3 @@
-import PropTypes from "prop-types";
-
-constructBooksData.propTypes = {
-  id: PropTypes.string,
-  volumeInfo: {
-    title: PropTypes.string,
-    authors: PropTypes.string || PropTypes.Array,
-    imageLinks: {
-      smallThumbnail: PropTypes.string,
-      thumbnail: PropTypes.string,
-    },
-    description: PropTypes.string,
-    categories: PropTypes.string || PropTypes.Array,
-  },
-};
-
 function constructBooksData(books) {
   return books.map((book) => ({
     id: book.id,

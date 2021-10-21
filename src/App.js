@@ -7,7 +7,6 @@ import InfoPage from "./pages/info/InfoPage";
 import BookPage from "./pages/book/bookPage";
 
 function App() {
-  console.log(" render app");
   return (
     <>
       <Header>

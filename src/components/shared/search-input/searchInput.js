@@ -1,14 +1,4 @@
-import PropTypes from "prop-types";
 import "./styles.scss";
-
-SearchInput.propTypes = {
-  inputValue: PropTypes.string,
-  onChange: PropTypes.func,
-  onSubmit: PropTypes.func,
-  placeholderText: PropTypes.string,
-  maxTextLength: PropTypes.number,
-  onKeyDown: PropTypes.func,
-};
 
 export default function SearchInput({
   inputValue,
